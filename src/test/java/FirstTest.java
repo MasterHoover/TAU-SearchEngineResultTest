@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class FirstTest {
 
     private WebDriver driver;
@@ -56,7 +58,7 @@ public class FirstTest {
             log += pass ? " Passed." : " Failed.";
             System.out.println(log);
 
-            assert (pass);
+            assertTrue (pass);
         }
     }
 
