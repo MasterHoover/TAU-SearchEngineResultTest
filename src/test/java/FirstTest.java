@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageobjects.DuckDuckGoPage;
 
 import java.time.Duration;
 import java.util.List;
@@ -19,15 +20,13 @@ public class FirstTest {
     final long WAIT_TIME_IN_SECONDS = 15;
 
     @BeforeEach
-    public void initWebDriver()
-    {
+    public void initWebDriver() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIME_IN_SECONDS));
     }
 
     @Test
-    public void snippetResults()
-    {
+    public void verifySnippetResultsHardCoded() {
         // Load the page
         driver.get("https://duckduckgo.com");
 
@@ -59,6 +58,40 @@ public class FirstTest {
             System.out.println(log);
 
             assertTrue (pass);
+        }
+    }
+
+    @Test
+    public void duckduckgoVerifyGiantPandaSearchResults()
+    {
+        DuckDuckGoPage page = new DuckDuckGoPage(driver);
+        page.loadPage();
+        page.search("giant panda");
+        List<WebElement> results = page.fetchResults();
+        verifySearchResults(results, "(?i).*(giant|panda).*");
+    }
+
+    @Test
+    public void duckduckgoVerifyHelloWorldSearchResults()
+    {
+        DuckDuckGoPage page = new DuckDuckGoPage(driver);
+        page.loadPage();
+        page.search("hello world");
+        List<WebElement> results = page.fetchResults();
+        verifySearchResults(results, "(?i).*(hello|world).*");
+    }
+
+    public void verifySearchResults(List<WebElement> results, String match)
+    {
+        int index = 1;
+        System.out.println("LOOKING AT " + results.size() + " RESULTS:");
+        for (WebElement result : results)
+        {
+            boolean pass = result.getText().matches(match);
+            String log = "Result " + index++;
+            log += pass ? " Passed." : " Failed.";
+            System.out.println(log);
+            assertTrue(pass);
         }
     }
 
