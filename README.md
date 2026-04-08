@@ -20,12 +20,9 @@ Chapter: Chapter 8 - "Using Locators for testing
 5. Analyze the texts of the results and confirm if they contain either "giant", "panda" or both
 
 **My Locators:**<br/>
-Search bar<br/>
-- `By.id("searchbox_input")`<br/>
-Search button<br/>
-- `By.cssSelector("button[data-mode='search']")`<br/>
-Search result text<br/>
-- `By.cssSelector("ol.react-results--main article div[data-result='snippet']")`
+- Search bar : By.id("searchbox_input")`<br/>
+- Search button<br/> : `By.cssSelector("button[data-mode='search']")`<br/>
+- Search result text<br/> : `By.cssSelector("ol.react-results--main article div[data-result='snippet']")`
 
 **Useful Functions**<br/>
 - `new WebDriver()` : Initialize the WebDriver. Used to open Google Chrome and get the Elements within the pages
