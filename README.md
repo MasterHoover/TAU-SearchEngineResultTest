@@ -2,15 +2,15 @@
 Web page tested: DuckDuckGo.com<br/>
 This test searches for "giant panda" in the DuckDuckGo search engine and test if the initial results (before clicking "More results" button) each contain the keywords "giant", "panda", or both.
 
-**Tools**<br/>
-Language: Java<br/>
-Framework: Selenium + JUnit<br/>
-Browser: Chrome
+**Tools:**<br/>
+- _Language_: Java<br/>
+- _Framework_: Selenium + JUnit<br/>
+- _Browser_: Chrome
 
 **Credits:**<br/>
-School: Test Automation University (TAU)<br/>
-Course: Web Element Locator Strategies<br/>
-Chapter: Chapter 8 - "Using Locators for testing
+- _School_: Test Automation University (TAU)<br/>
+- _Course_: Web Element Locator Strategies<br/>
+- _Chapter_: Chapter 8 - "Using Locators for testing
 
 **STEPS:**<br/>
 1. Find the Search bar
