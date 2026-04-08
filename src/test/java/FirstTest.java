@@ -1,11 +1,8 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,33 +17,34 @@ public class FirstTest {
     final long WAIT_TIME_IN_SECONDS = 15;
 
     @BeforeEach
-    public void initWebDriver() {
+    public void initWebDriver()
+    {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIME_IN_SECONDS));
     }
 
     @Test
-    public void openGoogleTest() {
-
+    public void snippetResults()
+    {
         // Load the page
         driver.get("https://duckduckgo.com");
 
         // Enter the search phrase
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("searchbox_input")));
-        WebElement searchInput = driver.findElement(By.id("searchbox_input"));
+        WebElement searchInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("searchbox_input")));
+        //WebElement searchInput = driver.findElement(By.id("searchbox_input"));
         searchInput.sendKeys("giant panda");
 
         // Click search button
-
         WebElement searchButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-mode='search']"))); //driver.findElement(By.cssSelector("button[data-mode='search']"));
         searchButton.click();
 
         // Wait for results to appear
         wait.until(ExpectedConditions.titleContains("giant panda"));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.kY2IgmnCmOGjharHErah")));
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.kY2IgmnCmOGjharHErah")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("ol.react-results--main")));
 
         //Fetch all the results
-        List<WebElement> results = driver.findElements(By.cssSelector("span.kY2IgmnCmOGjharHErah"));
+        List<WebElement> results = driver.findElements(By.cssSelector("ol.react-results--main article div[data-result='snippet']"));
 
         // Make sure each result contains the word "panda
         int index = 1;
