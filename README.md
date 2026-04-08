@@ -21,9 +21,9 @@ Chapter: Chapter 8 - "Using Locators for testing
 
 **My Locators:**<br/>
 Search bar<br/>
-- `By.id("searchbox_input")`
+- `By.id("searchbox_input")`<br/>
 Search button<br/>
-- `By.cssSelector("button[data-mode='search']")`
+- `By.cssSelector("button[data-mode='search']")`<br/>
 Search result text<br/>
 - `By.cssSelector("ol.react-results--main article div[data-result='snippet']")`
 
